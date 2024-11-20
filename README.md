@@ -2,11 +2,13 @@ Write a function that takes a member profile object from an external client, sea
 
 Let's say each profile looks like this:
 
+```
 export type MemberProfile = {
   firstName: string;
   lastName: string;
   dateOfBirth: string;
 }
+```
 
 The format for dateOfBirth that we receive is YYYY/MM/DD but in our database the format is inconsistent. The formats we in our DB are YYYY/MM/DD, MM/DD/YYYY, and YY/MM/DD. Write a function that will find a matching record if one exists in the database.
 
@@ -16,13 +18,15 @@ Our DOB formats: YYYY/MM/DD, MM/DD/YYYY, YY/MM/DD
 
 Assume you have these apis to query the database. The first one will take a single member profile as an input and query the database to find an exact match. The second will take a list of memberProfiles and  returns True if ANY element in the array matches with ANY record in the DB
 
-Your solution will use one of these two apis. Either is viable depending on your approach to the problem.
+Your solution will need to use use one of the two methods below. Either is viable depending on your approach to the problem.
 
+```
 // Takes a single member profile and returns True if any record matches
 getMatchingProfile(MemberProfile): boolean
 
 // Takes an array of member profiles and returns True if ANY element in the array matches with ANY record in the DB
 getMatchingProfile(MemberProfile[]): boolean
+```
 
 Example Flow:
 

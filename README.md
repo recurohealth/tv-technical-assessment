@@ -12,9 +12,9 @@ export type MemberProfile = {
 
 The format for dateOfBirth that we receive is YYYY/MM/DD but in our database the format is inconsistent. The formats we in our DB are YYYY/MM/DD, MM/DD/YYYY, and YY/MM/DD. Write a function that will find a matching record if one exists in the database.
 
-Their dob format: YYYY/MM/DD
+Their dob format: `YYYY/MM/DD`
 
-Our DOB formats: YYYY/MM/DD, MM/DD/YYYY, YY/MM/DD
+Our DOB formats: `YYYY/MM/DD, MM/DD/YYYY, YY/MM/DD`
 
 Assume you have these apis to query the database. The first one will take a single member profile as an input and query the database to find an exact match. The second will take a list of memberProfiles and  returns True if ANY element in the array matches with ANY record in the DB
 
@@ -30,11 +30,13 @@ getMatchingProfile(MemberProfile[]): boolean
 
 Example Flow:
 
+```
 Example input: {
   firstName: Bob,
   lastName: Smith,
   dateOfBirth: 1946/06/12
 }
+```
 
 Example records in our DB:
 
@@ -48,6 +50,7 @@ Expected output: True
 
 Scaffold:
 
+```
 export type MemberProfile = {
   firstName: string;
   lastName: string;
@@ -63,3 +66,4 @@ function reformatData(memberProfile: MemberProfile): boolean {
   // or
   // return getMatchingProfile(memberProfileArray);
 }
+```

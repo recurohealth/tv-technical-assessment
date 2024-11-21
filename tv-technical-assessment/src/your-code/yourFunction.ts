@@ -10,6 +10,8 @@
 
 // Our Database DOB formats: `YYYY/MM/DD, MM/DD/YYYY, YY/MM/DD`
 
+// You can use either pseudocode or typescript. If you use pseudocode, you may want to turn off syntax highlighting.
+
 export type MemberProfile = {
   firstName: string;
   lastName: string;

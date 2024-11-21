@@ -1,3 +1,5 @@
+// These comments before the MemberProfile type are excerpts from the readme to save you the trouble of switching back and forth between files.
+
 // Takes a single member profile and returns True if any record matches
 //checkMatchingProfile(MemberProfile): boolean
 
@@ -6,7 +8,7 @@
 
 // Input DOB format: `YYYY/MM/DD`
 
-// Our DOB formats: `YYYY/MM/DD, MM/DD/YYYY, YY/MM/DD`
+// Our Database DOB formats: `YYYY/MM/DD, MM/DD/YYYY, YY/MM/DD`
 
 export type MemberProfile = {
   firstName: string;

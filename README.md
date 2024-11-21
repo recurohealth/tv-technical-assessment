@@ -1,8 +1,10 @@
 Intro:
+
 For this assessment, you’re free to use either pseudocode or Typescript. The purpose of it is to get an understanding of how you think through a problem. You are encouraged to ask clarifying questions and talk through your thought process! Good luck!
 
 Prompt:
-Write a function that takes a member profile object from an external client, searches for a matching member record in our database and returns True if there's a match. Suppose the primary key for a member in our database is the firstName, lastName, and the dateOfBirth. You are not allowed to use any libraries other than core typescript libraries. You may write your solution in either typescript or pseudocode (if you use pseudocode, you can assume you have access to functions that do what the core typescript functions do). You must disable any AI assistance from your IDE.
+
+Write a function that takes a member profile object from an external client, searches for a matching member record in our database and returns True if there's a match. Suppose the primary key for a member in our database is the firstName, lastName, and the dateOfBirth. You are not allowed to use any libraries other than core typescript libraries. You may write your solution in either typescript or pseudocode (if you use pseudocode, you can assume you have access to functions that do what the core typescript functions do). You must disable any AI assistance from your IDE. After you've pulled down this project and opened it in a text editor, navigate to `src/your-code/your-function.ts`. Begin writing your code there.
 
 Let's say each profile looks like this:
 

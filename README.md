@@ -1,6 +1,6 @@
 Intro:
 
-For this assessment, you’re free to use either pseudocode or Typescript. The purpose of it is to get an understanding of how you think through a problem. You are encouraged to ask clarifying questions and talk through your thought process! Good luck!
+For this assessment, you’re free to use either pseudocode or Typescript. The purpose of it is to get an understanding of how you think through a problem. You are encouraged to ask clarifying questions and talk through your thought process! Arriving at a correct solution is less important than having a good discussion about the problem. Good luck!
 
 Prompt:
 

@@ -21,7 +21,7 @@ export type MemberProfile = {
 function isMemberMatch(memberProfile: MemberProfile): boolean {
   // write your code here
   // Use either
-  // return checkMatchingProfile(memberProfile);
+  // return checkMatchingProfile(foo);
   // or
-  // return checkMatchingProfile(memberProfileArray);
+  // return checkMatchingProfile(fooArray);
 }

@@ -6,8 +6,8 @@ export type MemberProfile = {
   dateOfBirth: string;
 };
 
-// Example
-// { firstName: 'Bob', lastName: 'Smith', dateOfBirth: '46/06/12' }
+// Example input
+// { firstName: 'Bob ', lastName: 'Smith', dateOfBirth: '1946/06/12' }
 
 export const isMemberMatch = (memberProfile: MemberProfile): boolean => {
   // Write your code here.

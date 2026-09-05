@@ -1,16 +1,4 @@
-// These comments before the MemberProfile type are excerpts from the readme to save you the trouble of switching back and forth between files.
-
-// Takes a single member profile and returns True if any record matches
-//checkMatchingProfile(MemberProfile): boolean
-
-// Takes an array of member profiles and returns True if ANY element in the array matches with ANY record in the DB
-//checkMatchingProfile(MemberProfile[]): boolean
-
-// Input DOB format: `YYYY/MM/DD`
-
-// Our Database DOB formats: `YYYY/MM/DD, MM/DD/YYYY, YY/MM/DD`
-
-// You can use either pseudocode or typescript. If you use pseudocode, you may want to turn off syntax highlighting.
+import { checkMatchingProfile } from './checkMatchingProfile';
 
 export type MemberProfile = {
   firstName: string;
@@ -18,10 +6,14 @@ export type MemberProfile = {
   dateOfBirth: string;
 };
 
-function isMemberMatch(memberProfile: MemberProfile): boolean {
-  // write your code here
-  // Use either
-  // return checkMatchingProfile(foo);
-  // or
-  // return checkMatchingProfile(fooArray);
+// Example
+// { firstName: 'Bob', lastName: 'Smith', dateOfBirth: '46/06/12' }
+
+export const isMemberMatch = (memberProfile: MemberProfile): boolean => {
+  // Write your code here.
+  // Call checkMatchingProfile with a single MemberProfile, or with a
+  // MemberProfile[] if you build more than one candidate to check.
+
+  // return checkMatchingProfile(memberProfile);
+  // return checkMatchingProfile([memberProfile, memberProfile, memberProfile]);
 }

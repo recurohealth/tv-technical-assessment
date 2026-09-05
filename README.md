@@ -1,50 +1,83 @@
-Intro:
+# Member Match Exercise
 
-For this assessment, you’re free to use either pseudocode or Typescript. The purpose of it is to get an understanding of how you think through a problem. You are encouraged to ask clarifying questions and talk through your thought process! Arriving at a correct solution is less important than having a good discussion about the problem. Good luck!
+## Intro
 
-Prompt:
+You are free to write your solution in TypeScript or pseudocode. The goal
+is to see how you think through a problem. Ask clarifying questions and
+talk through your reasoning. A working solution matters less than a good
+discussion about the problem. Good luck!
 
-Write a function that takes a member profile object from an external client, searches for a matching member record in our database and returns True if there's a match. Suppose the primary key for a member in our database is the firstName, lastName, and the dateOfBirth. You are not allowed to use any libraries other than core typescript libraries. You may write your solution in either typescript or pseudocode, or any popular object-oriented language (if you use pseudocode, you can assume you have access to functions that do what the core typescript functions do). You must disable any AI assistance from your IDE. After you've pulled down this project and opened it in a text editor, navigate to `src/your-code/yourFunction.ts`. Begin writing your code there.
-
-Let's say each profile looks like this:
+## Setup
 
 ```
+npm install
+npm test
+```
+
+`npm test` runs `src/your-code/yourFunction.test.ts` against the sample
+data in `src/your-code/mockDatabase.ts`. Run it as often as you like while
+you work: it gives you real pass/fail feedback instead of only a
+talked-through answer.
+
+## Where to write your code
+
+- `src/your-code/yourFunction.ts` — write your solution in `isMemberMatch`.
+  This is the only file you need to change.
+- `src/your-code/checkMatchingProfile.ts` and `src/your-code/mockDatabase.ts`
+  are given. Read them for context, but you should not need to change them.
+
+## Prompt
+
+Write a function that takes a member profile object from an external
+client, searches for a matching member record in our database, and
+returns `true` if there is a match. The primary key for a member in our
+database is `firstName`, `lastName`, and `dateOfBirth`.
+
+Use only core language features: no third-party libraries. You may write
+your solution in TypeScript, in pseudocode, or in any popular
+object-oriented language; if you use pseudocode or another language,
+assume you have access to functions equivalent to TypeScript's core
+library. You must disable any AI assistance in your editor.
+
+Each profile looks like this:
+
+```ts
 export type MemberProfile = {
   firstName: string;
   lastName: string;
   dateOfBirth: string;
-}
+};
 ```
 
-The format for dateOfBirth that we receive is YYYY/MM/DD but in our database the format is inconsistent. The formats we in our DB are YYYY/MM/DD, MM/DD/YYYY, and YY/MM/DD. Write a function that will find a matching record if one exists in the database.
+The client always sends `dateOfBirth` as `YYYY/MM/DD`, but our database
+stores it inconsistently. The formats we have in our DB are `YYYY/MM/DD`,
+`MM/DD/YYYY`, and `YY/MM/DD`.
 
-Their dob format: `YYYY/MM/DD`
+A client-supplied name can also differ in case or have extra surrounding
+whitespace, even when it refers to the same member on file. Your matching
+logic needs to account for this, not only for the date format.
 
-Our DOB formats: `YYYY/MM/DD, MM/DD/YYYY, YY/MM/DD`
+Assume you have these APIs to query the database. The first takes a
+single member profile and checks for an exact match. The second takes an
+array of member profiles and returns `true` if any element matches any
+record in the DB:
 
-Assume you have these apis to query the database. The first one will take a single member profile as an input and query the database to find an exact match. The second will take a list of memberProfiles and returns True if ANY element in the array matches with ANY record in the DB
-
-Your solution will need to use use one of the two methods below. Either is viable depending on your approach to the problem.
-
-```
-// Takes a single member profile and returns True if any record matches
-checkMatchingProfile(MemberProfile): boolean
-
-// Takes an array of member profiles and returns True if ANY element in the array matches with ANY record in the DB
-checkMatchingProfile(MemberProfile[]): boolean
-```
-
-Example Flow:
-
-```
-Example input: {
-  firstName: Bob,
-  lastName: Smith,
-  dateOfBirth: 1946/06/12
-}
+```ts
+checkMatchingProfile(profile: MemberProfile): boolean;
+checkMatchingProfile(profiles: MemberProfile[]): boolean;
 ```
 
-Example records in our DB:
+Either is a viable way to solve this, depending on your approach.
+
+### Example
+
+Input:
+
+```
+{ firstName: 'Bob', lastName: 'Smith', dateOfBirth: '1946/06/12' }
+```
+
+Records in our DB:
 
 | firstName | lastName | dateOfBirth |
 | --------- | -------- | ----------- |
@@ -52,24 +85,6 @@ Example records in our DB:
 | Mary      | Jane     | 1980/12/01  |
 | Peter     | Parker   | 01/02/1999  |
 
-Expected output: True
+Expected output: `true`
 
-Scaffold:
-
-```
-export type MemberProfile = {
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
-}
-
-function reformatData(memberProfile: MemberProfile): boolean {
-
-  // write your code here
-
-  // Use either
-  // return checkMatchingProfile(memberProfile);
-  // or
-  // return checkMatchingProfile(memberProfileArray);
-}
-```
+The full set of sample records is in `src/your-code/mockDatabase.ts`.

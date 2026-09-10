@@ -7,7 +7,11 @@ export type MemberProfile = {
 };
 
 // Example input
-// { firstName: 'Bob ', lastName: 'Smith', dateOfBirth: '1946/06/12' }
+// { firstName: 'bob', lastName: 'Smith', dateOfBirth: '1946/06/12' } --YYYY/MM/DD
+// DOB FORMATS:
+// - YYYY/MM/DD
+// - MM/DD/YYYY
+// - YY/MM/DD
 
 export const isMemberMatch = (memberProfile: MemberProfile): boolean => {
   // Write your code here.

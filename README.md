@@ -5,7 +5,10 @@
 You are free to write your solution in TypeScript or pseudocode. The goal
 is to see how you think through a problem. Ask clarifying questions and
 talk through your reasoning. A working solution matters less than a good
-discussion about the problem. Good luck!
+discussion about the problem.
+
+Some requirements in this exercise are intentionally open. State the
+assumption you make, and explain why. Good luck!
 
 ## Setup
 
@@ -33,12 +36,6 @@ client, searches for a matching member record in our database, and
 returns `true` if there is a match. The primary key for a member in our
 database is `firstName`, `lastName`, and `dateOfBirth`.
 
-Use only core language features: no third-party libraries. You may write
-your solution in TypeScript, in pseudocode, or in any popular
-object-oriented language; if you use pseudocode or another language,
-assume you have access to functions equivalent to TypeScript's core
-library. You must disable any AI assistance in your editor.
-
 Each profile looks like this:
 
 ```ts
@@ -49,32 +46,63 @@ export type MemberProfile = {
 };
 ```
 
-The client always sends `dateOfBirth` as `YYYY/MM/DD`, but our database
-stores it inconsistently. The formats we have in our DB are `YYYY/MM/DD`,
-`MM/DD/YYYY`, and `YY/MM/DD`.
+### Constraints
 
-A client-supplied name can also differ in case or have extra surrounding
-whitespace, even when it refers to the same member on file. Your matching
-logic needs to account for this, not only for the date format.
+- Use only core language features. Do not use a third-party library.
+- Write your solution in TypeScript, in pseudocode, or in a common
+  object-oriented language.
+- If you use pseudocode or another language, assume you have functions
+  equivalent to the TypeScript core library.
+- Disable any AI assistance in your editor.
 
-Assume you have these APIs to query the database. The first takes a
-single member profile and checks for an exact match. The second takes an
-array of member profiles and returns `true` if any element matches any
-record in the DB:
+### The database API
+
+`checkMatchingProfile` stands in for a call to our member database, for
+the purpose of this exercise:
 
 ```ts
 checkMatchingProfile(profile: MemberProfile): boolean;
 checkMatchingProfile(profiles: MemberProfile[]): boolean;
 ```
 
-Either is a viable way to solve this, depending on your approach.
+- The first form takes one profile and checks it against the database.
+- The second form takes an array of profiles. It returns `true` if any
+  profile in the array matches any record in the database.
+- The function only compares data. It does not add, change, or remove
+  any record.
+- The function does an exact, case-sensitive match on the given fields.
+  It does not trim whitespace, and it does not normalize the date
+  format for you.
+- Either form is a viable way to solve the problem. The choice is part
+  of your design.
+
+### Input details
+
+The profile comes from an external client-facing form. The form always
+submits all three fields: `firstName`, `lastName`, and `dateOfBirth`.
+Do not add a check for a missing field.
+
+The form validates the date field before it submits. Because of this,
+`dateOfBirth` always arrives as `YYYY/MM/DD`. The form does not validate
+the name fields. A client-supplied name can differ from the stored name
+in case, or have extra surrounding whitespace, even when it refers to
+the same member.
+
+Our database stores the date as a string, in one of three formats:
+
+- `YYYY/MM/DD`
+- `MM/DD/YYYY`
+- `YY/MM/DD`
+
+Your matching logic must account for both the date format and the name
+difference.
 
 ### Example
 
 Input:
 
 ```
-{ firstName: 'Bob', lastName: 'Smith', dateOfBirth: '1946/06/12' }
+{ firstName: 'bob', lastName: 'Smith', dateOfBirth: '1946/06/12' }
 ```
 
 Records in our DB:

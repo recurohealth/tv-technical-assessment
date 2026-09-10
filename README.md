@@ -2,13 +2,9 @@
 
 ## Intro
 
-You are free to write your solution in TypeScript or pseudocode. The goal
-is to see how you think through a problem. Ask clarifying questions and
-talk through your reasoning. A working solution matters less than a good
-discussion about the problem.
+You are free to write your solution in TypeScript or pseudocode. The goal is to see how you think through a problem. Ask clarifying questions and talk through your reasoning. A working solution matters less than a good discussion about the problem.
 
-Some requirements in this exercise are intentionally open. State the
-assumption you make, and explain why. Good luck!
+Some requirements in this exercise are intentionally open. State the assumption you make, and explain why. Good luck!
 
 ## Setup
 
@@ -17,10 +13,7 @@ npm install
 npm test
 ```
 
-`npm test` runs `src/your-code/yourFunction.test.ts` against the sample
-data in `src/your-code/mockDatabase.ts`. Run it as often as you like while
-you work: it gives you real pass/fail feedback instead of only a
-talked-through answer.
+`npm test` runs `src/your-code/yourFunction.test.ts` against the sample data in `src/your-code/mockDatabase.ts`. Run it as often as you like while you work: it gives you real pass/fail feedback instead of only a talked-through answer.
 
 ## Where to write your code
 

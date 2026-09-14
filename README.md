@@ -71,15 +71,19 @@ checkMatchingProfile(profiles: MemberProfile[]): boolean;
 
 ### Input details
 
-The profile comes from an external client-facing form. The form always
+The input, member profile, comes from an external client-facing form. The form always
 submits all three fields: `firstName`, `lastName`, and `dateOfBirth`.
 Do not add a check for a missing field.
 
-The form validates the date field before it submits. Because of this,
-`dateOfBirth` always arrives as `YYYY/MM/DD`. The form does not validate
-the name fields. A client-supplied name can differ from the stored name
+Name Fields (`firstName`, `lastName`):
+The form **DOES NOT** validate the name fields.
+Meaning, a client-supplied first or last name may differ from the stored name (in the database)
 in case, or have extra surrounding whitespace, even when it refers to
 the same member.
+
+Date Field (`dateOfBirth`):
+The form **DOES** validate the date field before it submits. Because of this,
+`dateOfBirth` always arrives in the input as `YYYY/MM/DD`. 
 
 Our database stores the date as a string, in one of three formats:
 

@@ -45,12 +45,17 @@ the purpose of this exercise:
 
 ### Input details
 
-The profile comes from an external client-facing form. The form always
+The input, member profile, comes from an external client-facing form. The form always
 submits all three fields: `firstName`, `lastName`, and `dateOfBirth`.
 
-The form validates the date field before it submits. Because of this,
-`dateOfBirth` always arrives as `YYYY/MM/DD`. The form does not validate
-the first name or last name fields. A client-supplied name can differ from the name in the mock database in case, or have extra surrounding whitespace these things should be taken into consideration.
+Name Fields (`firstName`, `lastName`):
+The form **DOES NOT** validate the name fields.
+Meaning, a client-supplied first or last name may differ from the name in the mock database in case, or have extra surrounding whitespace, even when it refers to
+the same member. You should account for this.
+
+Date Field (`dateOfBirth`):
+The form **DOES** validate the date field before it submits. Because of this,
+`dateOfBirth` always arrives in the input as `YYYY/MM/DD`. 
 
 Our database stores the date as a string, in one of three formats:
 - `YYYY/MM/DD`

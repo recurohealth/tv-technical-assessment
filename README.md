@@ -6,6 +6,11 @@ You are free to write your solution in TypeScript or pseudocode. The goal is to 
 
 Some requirements in this exercise are intentionally open. State the assumption you make, and explain why. Good luck!
 
+- Use only core language features. Do not use a third-party library.
+- Write your solution in TypeScript, in pseudocode, or in a common
+  object-oriented language.
+- Disable any AI assistance in your editor.
+
 ## Setup
 
 ```
@@ -24,45 +29,14 @@ npm test
 
 ## Prompt
 
-Write a function that takes a member profile object from an external
-client, searches for a matching member record in our database, and
-returns `true` if there is a match. The primary key for a member in our
-database is `firstName`, `lastName`, and `dateOfBirth`.
-
-Each profile looks like this:
-
-```ts
-export type MemberProfile = {
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
-};
-```
-
-### Constraints
-
-- Use only core language features. Do not use a third-party library.
-- Write your solution in TypeScript, in pseudocode, or in a common
-  object-oriented language.
-- If you use pseudocode or another language, assume you have functions
-  equivalent to the TypeScript core library.
-- Disable any AI assistance in your editor.
+Write a function that takes a `MemberProfile` from a frontend client that searches for a matching member record and returns `true` if there is a match. The primary key for a member in our database is `firstName`, `lastName`, and `dateOfBirth`. This client sided function will call `checkMatchingProfile` which is an api endpoint for the purposes of this assessment.
 
 ### The database API
 
-`checkMatchingProfile` stands in for a call to our member database, for
+`checkMatchingProfile` is an api call that checks for the member in the mock database, for
 the purpose of this exercise:
 
-```ts
-checkMatchingProfile(profile: MemberProfile): boolean;
-checkMatchingProfile(profiles: MemberProfile[]): boolean;
-```
-
-- The first form takes one profile and checks it against the database.
-- The second form takes an array of profiles. It returns `true` if any
-  profile in the array matches any record in the database.
-- The function only compares data. It does not add, change, or remove
-  any record.
+- The function only compares data. It does not not modify or mutate any data that is passed into it. It will only handle strict equality between the data and what is in the mock database.
 - The function does an exact, case-sensitive match on the given fields.
   It does not trim whitespace, and it does not normalize the date
   format for you.
@@ -73,22 +47,15 @@ checkMatchingProfile(profiles: MemberProfile[]): boolean;
 
 The profile comes from an external client-facing form. The form always
 submits all three fields: `firstName`, `lastName`, and `dateOfBirth`.
-Do not add a check for a missing field.
 
 The form validates the date field before it submits. Because of this,
 `dateOfBirth` always arrives as `YYYY/MM/DD`. The form does not validate
-the name fields. A client-supplied name can differ from the stored name
-in case, or have extra surrounding whitespace, even when it refers to
-the same member.
+the first name or last name fields. A client-supplied name can differ from the name in the mock database in case, or have extra surrounding whitespace these things should be taken into consideration.
 
 Our database stores the date as a string, in one of three formats:
-
 - `YYYY/MM/DD`
 - `MM/DD/YYYY`
 - `YY/MM/DD`
-
-Your matching logic must account for both the date format and the name
-difference.
 
 ### Example
 
@@ -102,7 +69,7 @@ Records in our DB:
 
 | firstName | lastName | dateOfBirth |
 | --------- | -------- | ----------- |
-| Bob       | Smith    | 46/06/12    |
+| Bob       | Smith    | 46/06/12    | <------- BOB EXISTS HERE
 | Mary      | Jane     | 1980/12/01  |
 | Peter     | Parker   | 01/02/1999  |
 

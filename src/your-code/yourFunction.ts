@@ -6,6 +6,9 @@ export type MemberProfile = {
   dateOfBirth: string;
 };
 
+// checkMatchingProfile(profile: MemberProfile): boolean;
+// checkMatchingProfile(profiles: MemberProfile[]): boolean;
+
 // Example input
 // { firstName: 'bob', lastName: 'Smith', dateOfBirth: '1946/06/12' } --YYYY/MM/DD
 // DOB FORMATS:

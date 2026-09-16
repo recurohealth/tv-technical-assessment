@@ -1,16 +1,5 @@
 # Member Match Exercise
 
-## Intro
-
-You are free to write your solution in TypeScript or pseudocode. The goal is to see how you think through a problem. Ask clarifying questions and talk through your reasoning. A working solution matters less than a good discussion about the problem.
-
-Some requirements in this exercise are intentionally open. State the assumption you make, and explain why. Good luck!
-
-- Use only core language features. Do not use a third-party library.
-- Write your solution in TypeScript, in pseudocode, or in a common
-  object-oriented language.
-- Disable any AI assistance in your editor.
-
 ## Setup
 
 ```
@@ -18,51 +7,29 @@ npm install
 npm test
 ```
 
-`npm test` runs `src/your-code/yourFunction.test.ts` against the sample data in `src/your-code/mockDatabase.ts`. Run it as often as you like while you work: it gives you real pass/fail feedback instead of only a talked-through answer.
+`npm test` runs `src/your-code/yourFunction.test.ts` against the sample data in `src/your-code/mockDatabase.ts`. Run it often. It gives you pass/fail feedback as you work.
 
 ## Where to write your code
 
-- `src/your-code/yourFunction.ts` — write your solution in `isMemberMatch`.
-  This is the only file you need to change.
-- `src/your-code/checkMatchingProfile.ts` and `src/your-code/mockDatabase.ts`
-  are given. Read them for context, but you should not need to change them.
+- Write your solution in `isMemberMatch` in `src/your-code/yourFunction.ts`. This is the only file to change.
+- `src/your-code/checkMatchingProfile.ts` and `src/your-code/mockDatabase.ts` are given. Read them for context. Do not change them.
 
-## Prompt
+## Task
 
-Write a function that takes a `MemberProfile` from a frontend client that searches for a matching member record and returns `true` if there is a match. The primary key for a member in our database is `firstName`, `lastName`, and `dateOfBirth`. This client sided function will call `checkMatchingProfile` which is an api endpoint for the purposes of this assessment.
+Write `isMemberMatch`. It takes a `MemberProfile` and returns `true` when a matching record exists in the database.
 
-### The database API
+A match requires all three fields: `firstName`, `lastName`, and `dateOfBirth`.
 
-`checkMatchingProfile` is an api call that checks for the member in the mock database, for
-the purpose of this exercise:
+Call `checkMatchingProfile` to check the database. You can call it with one profile or with an array of profiles. Both approaches are valid.
 
-- The function only compares data. It does not not modify or mutate any data that is passed into it. It will only handle strict equality between the data and what is in the mock database.
-- The function does an exact, case-sensitive match on the given fields.
-  It does not trim whitespace, and it does not normalize the date
-  format for you.
-- Either form is a viable way to solve the problem. The choice is part
-  of your design.
+## Matching rules
 
-### Input details
+- `checkMatchingProfile` does an exact, case-sensitive match. It does not trim whitespace or normalize date formats.
+- The form does not validate `firstName` or `lastName`. A name can differ from the database record in case or in extra whitespace.
+- The form validates `dateOfBirth`. The input always arrives as `YYYY/MM/DD`.
+- The database stores `dateOfBirth` as a string, in one of three formats: `YYYY/MM/DD`, `MM/DD/YYYY`, or `YY/MM/DD`.
 
-The input, member profile, comes from an external client-facing form. The form always
-submits all three fields: `firstName`, `lastName`, and `dateOfBirth`.
-
-Name Fields (`firstName`, `lastName`):
-The form **DOES NOT** validate the name fields.
-Meaning, a client-supplied first or last name may differ from the name in the mock database in case, or have extra surrounding whitespace, even when it refers to
-the same member. You should account for this.
-
-Date Field (`dateOfBirth`):
-The form **DOES** validate the date field before it submits. Because of this,
-`dateOfBirth` always arrives in the input as `YYYY/MM/DD`. 
-
-Our database stores the date as a string, in one of three formats:
-- `YYYY/MM/DD`
-- `MM/DD/YYYY`
-- `YY/MM/DD`
-
-### Example
+## Example
 
 Input:
 
@@ -70,13 +37,13 @@ Input:
 { firstName: 'bob', lastName: 'Smith', dateOfBirth: '1946/06/12' }
 ```
 
-Records in our DB:
+Database records:
 
-| firstName | lastName | dateOfBirth |
-| --------- | -------- | ----------- |
-| Bob       | Smith    | 46/06/12    | <------- BOB EXISTS HERE
-| Mary      | Jane     | 1980/12/01  |
-| Peter     | Parker   | 01/02/1999  |
+| firstName | lastName | dateOfBirth | Match |
+| --------- | -------- | ----------- | ----- |
+| Bob       | Smith    | 46/06/12    | Yes   |
+| Mary      | Jane     | 1980/12/01  |       |
+| Peter     | Parker   | 01/02/1999  |       |
 
 Expected output: `true`
 

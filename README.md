@@ -1,3 +1,10 @@
+## ℹ️ **Setup for the exercise** 
+Click the button below to launch a GitHub Codespace and get started in seconds:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/recurohealth/tv-technical-assessment/tree/main?quickstart=1&machine=basicLinux32gb)
+
+This will spin up a fully configured development environment in the cloud with all necessary tools pre-installed.
+
 # Member Match Exercise
 
 ## Setup

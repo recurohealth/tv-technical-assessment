@@ -1,75 +1,50 @@
-Intro:
+# Member Match Exercise
 
-For this assessment, you’re free to use either pseudocode or Typescript. The purpose of it is to get an understanding of how you think through a problem. You are encouraged to ask clarifying questions and talk through your thought process! Arriving at a correct solution is less important than having a good discussion about the problem. Good luck!
-
-Prompt:
-
-Write a function that takes a member profile object from an external client, searches for a matching member record in our database and returns True if there's a match. Suppose the primary key for a member in our database is the firstName, lastName, and the dateOfBirth. You are not allowed to use any libraries other than core typescript libraries. You may write your solution in either typescript or pseudocode, or any popular object-oriented language (if you use pseudocode, you can assume you have access to functions that do what the core typescript functions do). You must disable any AI assistance from your IDE. After you've pulled down this project and opened it in a text editor, navigate to `src/your-code/yourFunction.ts`. Begin writing your code there.
-
-Let's say each profile looks like this:
+## Setup
 
 ```
-export type MemberProfile = {
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
-}
+npm install
+npm test
 ```
 
-The format for dateOfBirth that we receive is YYYY/MM/DD but in our database the format is inconsistent. The formats we in our DB are YYYY/MM/DD, MM/DD/YYYY, and YY/MM/DD. Write a function that will find a matching record if one exists in the database.
+`npm test` runs `src/your-code/yourFunction.test.ts` against the sample data in `src/your-code/mockDatabase.ts`. Run it often. It gives you pass/fail feedback as you work.
 
-Their dob format: `YYYY/MM/DD`
+## Where to write your code
 
-Our DOB formats: `YYYY/MM/DD, MM/DD/YYYY, YY/MM/DD`
+- Write your solution in `isMemberMatch` in `src/your-code/yourFunction.ts`. This is the only file to change.
+- `src/your-code/checkMatchingProfile.ts` and `src/your-code/mockDatabase.ts` are given. Read them for context. Do not change them.
 
-Assume you have these apis to query the database. The first one will take a single member profile as an input and query the database to find an exact match. The second will take a list of memberProfiles and returns True if ANY element in the array matches with ANY record in the DB
+## Task
 
-Your solution will need to use use one of the two methods below. Either is viable depending on your approach to the problem.
+Write `isMemberMatch`. It takes a `MemberProfile` and returns `true` when a matching record exists in the database.
 
-```
-// Takes a single member profile and returns True if any record matches
-checkMatchingProfile(MemberProfile): boolean
+A match requires all three fields: `firstName`, `lastName`, and `dateOfBirth`.
 
-// Takes an array of member profiles and returns True if ANY element in the array matches with ANY record in the DB
-checkMatchingProfile(MemberProfile[]): boolean
-```
+Call `checkMatchingProfile` to check the database. You can call it with one profile or with an array of profiles. Both approaches are valid.
 
-Example Flow:
+## Matching rules
 
-```
-Example input: {
-  firstName: Bob,
-  lastName: Smith,
-  dateOfBirth: 1946/06/12
-}
-```
+- `checkMatchingProfile` does an exact, case-sensitive match. It does not trim whitespace or normalize date formats.
+- The form does not validate `firstName` or `lastName`. A name can differ from the database record in case or in extra whitespace.
+- The form validates `dateOfBirth`. The input always arrives as `YYYY/MM/DD`.
+- The database stores `dateOfBirth` as a string, in one of three formats: `YYYY/MM/DD`, `MM/DD/YYYY`, or `YY/MM/DD`.
 
-Example records in our DB:
+## Example
 
-| firstName | lastName | dateOfBirth |
-| --------- | -------- | ----------- |
-| Bob       | Smith    | 46/06/12    |
-| Mary      | Jane     | 1980/12/01  |
-| Peter     | Parker   | 01/02/1999  |
-
-Expected output: True
-
-Scaffold:
+Input:
 
 ```
-export type MemberProfile = {
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
-}
-
-function reformatData(memberProfile: MemberProfile): boolean {
-
-  // write your code here
-
-  // Use either
-  // return checkMatchingProfile(memberProfile);
-  // or
-  // return checkMatchingProfile(memberProfileArray);
-}
+{ firstName: 'bob', lastName: 'Smith', dateOfBirth: '1946/06/12' }
 ```
+
+Database records:
+
+| firstName | lastName | dateOfBirth | Match |
+| --------- | -------- | ----------- | ----- |
+| Bob       | Smith    | 46/06/12    | Yes   |
+| Mary      | Jane     | 1980/12/01  |       |
+| Peter     | Parker   | 01/02/1999  |       |
+
+Expected output: `true`
+
+The full set of sample records is in `src/your-code/mockDatabase.ts`.

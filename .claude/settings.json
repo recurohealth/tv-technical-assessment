@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git rm *)",
+      "Bash(npm audit *)",
+      "Bash(npx vitest *)",
+      "Bash(npm view *)",
+      "Bash(echo \"=== tsc exit: $? ===\")"
+    ]
+  }
+}

@@ -24,7 +24,7 @@ def is_member_match(member_profile: MemberProfile) -> bool:
     # Call check_matching_profile with a single MemberProfile, or with a
     # list[MemberProfile] if you build more than one candidate to check.
     # Assume check_matching_profile exists. It has the two forms shown
-    # in yourFunction.ts.
+    # in isMemberMatch.ts.
 
     # return check_matching_profile(member_profile)
     # return check_matching_profile([member_profile, member_profile, member_profile])

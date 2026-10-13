@@ -1,13 +1,10 @@
-import { checkMatchingProfile } from './checkMatchingProfile';
+import { checkMatchingProfileApi } from './checkMatchingProfileApi';
 
 export type MemberProfile = {
   firstName: string;
   lastName: string;
   dateOfBirth: string;
 };
-
-// checkMatchingProfile(profile: MemberProfile): boolean;
-// checkMatchingProfile(profiles: MemberProfile[]): boolean;
 
 // Example input
 // { firstName: 'bob', lastName: 'Smith', dateOfBirth: '1946/06/12' } --YYYY/MM/DD
@@ -18,9 +15,9 @@ export type MemberProfile = {
 
 export const isMemberMatch = (memberProfile: MemberProfile): boolean => {
   // Write your code here.
-  // Call checkMatchingProfile with a single MemberProfile, or with a
+  // Call checkMatchingProfileApi with a single MemberProfile, or with a
   // MemberProfile[] if you build more than one candidate to check.
 
-  // return checkMatchingProfile(memberProfile);
-  // return checkMatchingProfile([memberProfile, memberProfile, memberProfile]);
+  // return checkMatchingProfileApi(memberProfile);
+  // return checkMatchingProfileApi([memberProfile, memberProfile, memberProfile]);
 }

@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { isMemberMatch } from './yourFunction';
+import { isMemberMatch } from './isMemberMatch';
 
 describe('isMemberMatch', () => {
   test('matches a record stored in YY/MM/DD format', () => {

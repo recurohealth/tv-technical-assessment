@@ -17,13 +17,13 @@ public static class YourFunction
     public static bool IsMemberMatch(MemberProfile memberProfile)
     {
         // Write your code here.
-        // Call CheckMatchingProfile with a single MemberProfile, or with a
+        // Call CheckMatchingProfileApi with a single MemberProfile, or with a
         // MemberProfile[] if you build more than one candidate to check.
-        // Assume CheckMatchingProfile exists. It has the two forms shown
-        // in yourFunction.ts.
+        // Assume CheckMatchingProfileApi exists. It has the two forms shown
+        // in isMemberMatch.ts.
 
-        // return CheckMatchingProfile(memberProfile);
-        // return CheckMatchingProfile(new[] { memberProfile, memberProfile, memberProfile });
+        // return CheckMatchingProfileApi(memberProfile);
+        // return CheckMatchingProfileApi(new[] { memberProfile, memberProfile, memberProfile });
 
         throw new NotImplementedException();
     }

@@ -1,4 +1,4 @@
-import { MemberProfile } from './yourFunction';
+import { MemberProfile } from './isMemberMatch';
 
 export const MOCK_DB: MemberProfile[] = [
   { firstName: 'Bob', lastName: 'Smith', dateOfBirth: '46/06/12' }, // YY/MM/DD

@@ -14,12 +14,12 @@ npm install
 npm test
 ```
 
-`npm test` runs `src/your-code/yourFunction.test.ts` against the sample data in `src/your-code/mockDatabase.ts`. Run it often. It gives you pass/fail feedback as you work.
+`npm test` runs `src/your-code/isMemberMatch.test.ts` against the sample data in `src/your-code/mockDatabase.ts`. Run it often. It gives you pass/fail feedback as you work.
 
 ## Where to write your code
 
-- Write your solution in `isMemberMatch` in `src/your-code/yourFunction.ts`. This is the only file to change.
-- `src/your-code/checkMatchingProfile.ts` and `src/your-code/mockDatabase.ts` are given. Read them for context. Do not change them.
+- Write your solution in `isMemberMatch` in `src/your-code/isMemberMatch.ts`. This is the only file to change.
+- `src/your-code/checkMatchingProfileApi.ts` and `src/your-code/mockDatabase.ts` are given. Read them for context. Do not change them.
 
 ## Task
 
@@ -27,11 +27,11 @@ Write `isMemberMatch`. It takes a `MemberProfile` and returns `true` when a matc
 
 A match requires all three fields: `firstName`, `lastName`, and `dateOfBirth`.
 
-Call `checkMatchingProfile` to check the database. You can call it with one profile or with an array of profiles. Both approaches are valid.
+Call `checkMatchingProfileApi` to check the database. You can call it with one profile or with an array of profiles. Both approaches are valid.
 
 ## Matching rules
 
-- `checkMatchingProfile` does an exact, case-sensitive match. It does not trim whitespace or normalize date formats.
+- `checkMatchingProfileApi` does an exact, case-sensitive match. It does not trim whitespace or normalize date formats.
 - The form does not validate `firstName` or `lastName`. A name can differ from the database record in case or in extra whitespace.
 - The form validates `dateOfBirth`. The input always arrives as `YYYY/MM/DD`.
 - The database stores `dateOfBirth` as a string, in one of three formats: `YYYY/MM/DD`, `MM/DD/YYYY`, or `YY/MM/DD`.

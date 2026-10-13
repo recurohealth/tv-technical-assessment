@@ -1,4 +1,4 @@
-import { MemberProfile } from './yourFunction';
+import { MemberProfile } from './isMemberMatch';
 import { MOCK_DB } from './mockDatabase';
 
 // Given API. Do not change this file.
@@ -6,11 +6,11 @@ import { MOCK_DB } from './mockDatabase';
 // This stands in for a real database query: it checks for an exact,
 // case-sensitive, format-sensitive match against the stored records. It
 // does not normalize dates or names on your behalf.
-export function checkMatchingProfile(profile: MemberProfile): boolean;
+export function checkMatchingProfileApi(profile: MemberProfile): boolean;
 
-export function checkMatchingProfile(profiles: MemberProfile[]): boolean;
+export function checkMatchingProfileApi(profiles: MemberProfile[]): boolean;
 
-export function checkMatchingProfile(
+export function checkMatchingProfileApi(
   input: MemberProfile | MemberProfile[]
 ): boolean {
   const candidates = Array.isArray(input) ? input : [input];

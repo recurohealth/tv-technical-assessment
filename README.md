@@ -14,12 +14,12 @@ npm install
 npm test
 ```
 
-`npm test` runs `src/your-code/isMemberMatch.test.ts` against the sample data in `src/your-code/mockDatabase.ts`. Run it often. It gives you pass/fail feedback as you work.
+`npm test` runs `src/isMemberMatch.test.ts` against the sample data in `src/mockDatabase.ts`. Run it often. It gives you pass/fail feedback as you work.
 
 ## Where to write your code
 
-- Write your solution in `isMemberMatch` in `src/your-code/isMemberMatch.ts`. This is the only file to change.
-- `src/your-code/checkMatchingProfileApi.ts` and `src/your-code/mockDatabase.ts` are given. Read them for context. Do not change them.
+- Write your solution in `isMemberMatch` in `src/isMemberMatch.ts`. This is the only file to change.
+- `src/checkMatchingProfileApi.ts` and `src/mockDatabase.ts` are given. Read them for context. Do not change them.
 
 ## Task
 
@@ -54,4 +54,4 @@ Database records:
 
 Expected output: `true`
 
-The full set of sample records is in `src/your-code/mockDatabase.ts`.
+The full set of sample records is in `src/mockDatabase.ts`.
